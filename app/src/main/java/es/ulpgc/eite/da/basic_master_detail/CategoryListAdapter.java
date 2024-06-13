@@ -15,13 +15,30 @@ import java.util.List;
 public class CategoryListAdapter
     extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
 
-    private List<CategoryItem> categories;
+    private List<CategoryItem> categoryList;
     private Context context;
 
     public CategoryListAdapter(Context context, List<CategoryItem> categories) {
         this.context = context;
-        this.categories = categories;
+        this.categoryList = categories;
     }
+
+    public void addItems(List<CategoryItem> categories) {
+        categoryList.addAll(categories);
+        notifyDataSetChanged();
+    }
+
+    public void setItems(List<CategoryItem> categories) {
+        categoryList.clear();
+        categoryList.addAll(categories);
+        notifyDataSetChanged();
+    }
+
+    public void addItem(CategoryItem category) {
+        categoryList.add(category);
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
@@ -34,7 +51,7 @@ public class CategoryListAdapter
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CategoryItem category = categories.get(position);
+        CategoryItem category = categoryList.get(position);
         holder.categoryName.setText(category.getName());
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductListActivity.class);
@@ -46,18 +63,18 @@ public class CategoryListAdapter
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return categoryList.size();
     }
 
 
     public CategoryItem getItem(int position) {
-        return categories.get(position);
+        return categoryList.get(position);
     }
 
 
     @Override
     public long getItemId(int position) {
-        CategoryItem category = categories.get(position);
+        CategoryItem category = categoryList.get(position);
         return category.getId();
     }
 

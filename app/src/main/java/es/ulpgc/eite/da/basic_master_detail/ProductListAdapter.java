@@ -15,13 +15,31 @@ import java.util.List;
 public class ProductListAdapter
     extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
 
-    private List<ProductItem> products;
+    private List<ProductItem> productList;
     private Context context;
 
     public ProductListAdapter(Context context, List<ProductItem> products) {
         this.context = context;
-        this.products = products;
+        this.productList = products;
     }
+
+
+    public void addItems(List<ProductItem> products) {
+        productList.addAll(products);
+        notifyDataSetChanged();
+    }
+
+    public void setItems(List<ProductItem> products) {
+        productList.clear();
+        productList.addAll(products);
+        notifyDataSetChanged();
+    }
+
+    public void addItem(ProductItem product) {
+        productList.add(product);
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
@@ -34,7 +52,7 @@ public class ProductListAdapter
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ProductItem product = products.get(position);
+        ProductItem product = productList.get(position);
         holder.productName.setText(product.getName());
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductDetailActivity.class);
@@ -46,17 +64,17 @@ public class ProductListAdapter
 
     @Override
     public long getItemId(int position) {
-        ProductItem product = products.get(position);
+        ProductItem product = productList.get(position);
         return product.getId();
     }
 
     public ProductItem getItem(int position) {
-        return products.get(position);
+        return productList.get(position);
     }
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return productList.size();
     }
 
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CategoryListActivity extends AppCompatActivity {
 
-    private List<Category> categories;
+    private List<CategoryItem> categories;
     private RecyclerView categoryListRecycler;
     private CategoryListAdapter categoryListAdapter;
 

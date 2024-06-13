@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CatalogRepository {
     private static CatalogRepository instance;
-    private List<Category> categories;
+    private List<CategoryItem> categories;
 
     private CatalogRepository() {
         categories = loadCategories();
@@ -18,16 +18,16 @@ public class CatalogRepository {
         return instance;
     }
 
-    private List<Category> loadCategories() {
-        List<Category> categories = new ArrayList<>();
+    private List<CategoryItem> loadCategories() {
+        List<CategoryItem> categories = new ArrayList<>();
 
         // Electronics category
-        List<Product> electronicsProducts = new ArrayList<>();
-        electronicsProducts.add(new Product(
+        List<ProductItem> electronicsProducts = new ArrayList<>();
+        electronicsProducts.add(new ProductItem(
             1, "Smartphone",
             "Latest model with high resolution camera"
         ));
-        electronicsProducts.add(new Product(
+        electronicsProducts.add(new ProductItem(
             2, "Laptop",
             "High performance laptop for gaming and work"
         ));
@@ -35,67 +35,67 @@ public class CatalogRepository {
             3, "Headphones",
             "Noise-cancelling over-ear headphones"
         ));*/
-        Category electronics = new Category(
+        CategoryItem electronics = new CategoryItem(
             1, "Electronics",
             "Electronic items",
             electronicsProducts
         );
 
         // Books category
-        List<Product> booksProducts = new ArrayList<>();
-        booksProducts.add(new Product(
+        List<ProductItem> booksProducts = new ArrayList<>();
+        booksProducts.add(new ProductItem(
             4, "The Great Gatsby",
             "A classic novel by F. Scott Fitzgerald"
         ));
-        booksProducts.add(new Product(
+        booksProducts.add(new ProductItem(
             5, "1984",
             "Dystopian novel by George Orwell"
         ));
-        booksProducts.add(new Product(
+        booksProducts.add(new ProductItem(
             6, "To Kill a Mockingbird",
             "Novel by Harper Lee"
         ));
-        Category books = new Category(
+        CategoryItem books = new CategoryItem(
             2, "Books",
             "Various kinds of books",
             booksProducts
         );
 
         // Fashion category
-        List<Product> fashionProducts = new ArrayList<>();
-        fashionProducts.add(new Product(
+        List<ProductItem> fashionProducts = new ArrayList<>();
+        fashionProducts.add(new ProductItem(
             7, "T-shirt",
             "Cotton T-shirt available in various colors"
         ));
-        fashionProducts.add(new Product(
+        fashionProducts.add(new ProductItem(
             8, "Jeans",
             "Slim fit jeans for casual wear"
         ));
-        fashionProducts.add(new Product(
+        fashionProducts.add(new ProductItem(
             9, "Sneakers",
             "Comfortable sneakers for daily use"
         ));
-        Category fashion = new Category(
+        CategoryItem fashion = new CategoryItem(
             3, "Fashion",
             "Clothing and accessories",
             fashionProducts
         );
 
         // Home Appliances category
-        List<Product> homeAppliancesProducts = new ArrayList<>();
-        homeAppliancesProducts.add(new Product(
+        List<ProductItem> homeAppliancesProducts = new ArrayList<>();
+        homeAppliancesProducts.add(new ProductItem(
             10, "Refrigerator",
             "Energy efficient refrigerator"
         ));
-        homeAppliancesProducts.add(new Product(
+        homeAppliancesProducts.add(new ProductItem(
             11, "Microwave Oven",
             "Compact microwave oven with multiple functions"
         ));
-        homeAppliancesProducts.add(new Product(
+        homeAppliancesProducts.add(new ProductItem(
             12, "Washing Machine",
             "Front load washing machine with quick wash feature"
         ));
-        Category homeAppliances = new Category(
+        CategoryItem homeAppliances = new CategoryItem(
             4, "Home Appliances",
             "Appliances for home use",
             homeAppliancesProducts
@@ -108,27 +108,27 @@ public class CatalogRepository {
         categories.add(homeAppliances);
 
         // Set category for each product
-        for (Product product : electronicsProducts) {
+        for (ProductItem product : electronicsProducts) {
             product.setCategory(electronics);
         }
-        for (Product product : booksProducts) {
+        for (ProductItem product : booksProducts) {
             product.setCategory(books);
         }
-        for (Product product : fashionProducts) {
+        for (ProductItem product : fashionProducts) {
             product.setCategory(fashion);
         }
-        for (Product product : homeAppliancesProducts) {
+        for (ProductItem product : homeAppliancesProducts) {
             product.setCategory(homeAppliances);
         }
         return categories;
     }
 
-    public List<Category> getCategories() {
+    public List<CategoryItem> getCategories() {
         return categories;
     }
 
-    public List<Product> getProductsByCategoryId(int categoryId) {
-        for (Category category : categories) {
+    public List<ProductItem> getProductsByCategoryId(int categoryId) {
+        for (CategoryItem category : categories) {
             if (category.getId() == categoryId) {
                 return category.getProducts();
             }
@@ -138,9 +138,9 @@ public class CatalogRepository {
         return new ArrayList<>();
     }
 
-    public Product getProductById(int productId) {
-        for (Category category : categories) {
-            for (Product product : category.getProducts()) {
+    public ProductItem getProductById(int productId) {
+        for (CategoryItem category : categories) {
+            for (ProductItem product : category.getProducts()) {
                 if (product.getId() == productId) {
                     return product;
                 }

@@ -3,13 +3,13 @@ package es.ulpgc.eite.da.basic_master_detail;
 import java.io.Serializable;
 import java.util.List;
 
-public class Category implements Serializable {
+public class CategoryItem implements Serializable {
     private int id;
     private String name;
     private String description;
-    private List<Product> products;
+    private List<ProductItem> products;
 
-    public Category(int id, String name, String description, List<Product> products) {
+    public CategoryItem(int id, String name, String description, List<ProductItem> products) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -19,7 +19,7 @@ public class Category implements Serializable {
     public int getId() { return id; }
     public String getName() { return name; }
     public String getDescription() { return description; }
-    public List<Product> getProducts() { return products; }
+    public List<ProductItem> getProducts() { return products; }
 
     @Override
     public String toString() {

@@ -28,7 +28,7 @@ public class ProductListActivity extends AppCompatActivity {
 
         CatalogRepository catalog = CatalogRepository.getInstance();
         int categoryId = getIntent().getIntExtra("category_id", 0);
-        List<Product> products = catalog.getProductsByCategoryId(categoryId);
+        List<ProductItem> products = catalog.getProductsByCategoryId(categoryId);
 
         productListAdapter = new ProductListAdapter(this, products);
         productListRecycler.setAdapter(productListAdapter);

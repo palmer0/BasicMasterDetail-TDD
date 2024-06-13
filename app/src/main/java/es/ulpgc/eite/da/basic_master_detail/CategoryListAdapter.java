@@ -15,10 +15,10 @@ import java.util.List;
 public class CategoryListAdapter
     extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
 
-    private List<Category> categories;
+    private List<CategoryItem> categories;
     private Context context;
 
-    public CategoryListAdapter(Context context, List<Category> categories) {
+    public CategoryListAdapter(Context context, List<CategoryItem> categories) {
         this.context = context;
         this.categories = categories;
     }
@@ -34,7 +34,7 @@ public class CategoryListAdapter
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Category category = categories.get(position);
+        CategoryItem category = categories.get(position);
         holder.categoryName.setText(category.getName());
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductListActivity.class);
@@ -50,14 +50,14 @@ public class CategoryListAdapter
     }
 
 
-    public Category getItem(int position) {
+    public CategoryItem getItem(int position) {
         return categories.get(position);
     }
 
 
     @Override
     public long getItemId(int position) {
-        Category category = categories.get(position);
+        CategoryItem category = categories.get(position);
         return category.getId();
     }
 

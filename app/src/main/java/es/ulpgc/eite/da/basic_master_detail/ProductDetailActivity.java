@@ -22,7 +22,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         CatalogRepository catalog = CatalogRepository.getInstance();
         int productId = getIntent().getIntExtra("product_id", 0);
-        Product product = catalog.getProductById(productId);
+        ProductItem product = catalog.getProductById(productId);
 
         productNameTextView.setText(product.getName());
         productDescrTextView.setText(product.getDescription());

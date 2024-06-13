@@ -21,6 +21,22 @@ public class CategoryItem implements Serializable {
     public String getDescription() { return description; }
     public List<ProductItem> getProducts() { return products; }
 
+
+    // Sobrescribir equals y hashCode para comparación
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CategoryItem item = (CategoryItem) obj;
+        return item.id == id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return name;

@@ -1,13 +1,17 @@
 package es.ulpgc.eite.da.basic_master_detail;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CategoryListActivity extends AppCompatActivity {
+public class CategoryListActivity
+    extends AppCompatActivity implements View.OnClickListener {
 
     private List<CategoryItem> categories;
     private RecyclerView categoryListRecycler;
@@ -28,4 +32,12 @@ public class CategoryListActivity extends AppCompatActivity {
         categoryListRecycler.setAdapter(categoryListAdapter);
     }
 
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(this, ProductListActivity.class);
+        CategoryItem category = (CategoryItem) view.getTag();
+        //intent.putExtra("category", category);
+        intent.putExtra("category_id", category.getId());
+        startActivity(intent);
+    }
 }

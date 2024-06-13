@@ -17,11 +17,13 @@ public class ProductListAdapter
 
     private List<ProductItem> productList;
     private ProductListActivity parentActivity;
+    private final View.OnClickListener clickListener;
 
     public ProductListAdapter(
         ProductListActivity activity, List<ProductItem> products
     ) {
         parentActivity = activity;
+        clickListener = activity;
         productList = products;
     }
 
@@ -56,12 +58,8 @@ public class ProductListAdapter
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ProductItem product = productList.get(position);
         holder.productName.setText(product.getName());
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(parentActivity, ProductDetailActivity.class);
-            //intent.putExtra("product", product);
-            intent.putExtra("product_id", product.getId());
-            parentActivity.startActivity(intent);
-        });
+        holder.itemView.setTag(product);
+        holder.itemView.setOnClickListener(clickListener);
     }
 
     @Override

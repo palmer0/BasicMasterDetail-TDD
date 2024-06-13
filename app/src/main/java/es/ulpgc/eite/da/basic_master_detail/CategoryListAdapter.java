@@ -15,12 +15,12 @@ public class CategoryListAdapter
     extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
 
     private List<CategoryItem> categoryList;
-    private CategoryListActivity parentActivity;
+    private final View.OnClickListener clickListener;
 
     public CategoryListAdapter(
-        CategoryListActivity activity, List<CategoryItem> categories
-    ) {
-        parentActivity = activity;
+        View.OnClickListener listener, List<CategoryItem> categories
+        ) {
+        clickListener = listener;
         categoryList = categories;
     }
 
@@ -54,12 +54,8 @@ public class CategoryListAdapter
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CategoryItem category = categoryList.get(position);
         holder.categoryName.setText(category.getName());
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(parentActivity, ProductListActivity.class);
-            //intent.putExtra("category", category);
-            intent.putExtra("category_id", category.getId());
-            parentActivity.startActivity(intent);
-        });
+        holder.itemView.setTag(category);
+        holder.itemView.setOnClickListener(clickListener);
     }
 
     @Override

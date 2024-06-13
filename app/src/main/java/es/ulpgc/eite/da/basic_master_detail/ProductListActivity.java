@@ -1,13 +1,17 @@
 package es.ulpgc.eite.da.basic_master_detail;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ProductListActivity extends AppCompatActivity {
+public class ProductListActivity
+    extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView productListRecycler;
     private ProductListAdapter productListAdapter;
@@ -32,5 +36,14 @@ public class ProductListActivity extends AppCompatActivity {
 
         productListAdapter = new ProductListAdapter(this, products);
         productListRecycler.setAdapter(productListAdapter);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(this, ProductDetailActivity.class);
+        ProductItem product = (ProductItem) view.getTag();
+        //intent.putExtra("product", product);
+        intent.putExtra("product_id", product.getId());
+        startActivity(intent);
     }
 }

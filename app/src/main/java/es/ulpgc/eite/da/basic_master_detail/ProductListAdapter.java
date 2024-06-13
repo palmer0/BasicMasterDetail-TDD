@@ -16,11 +16,13 @@ public class ProductListAdapter
     extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
 
     private List<ProductItem> productList;
-    private Context context;
+    private ProductListActivity parentActivity;
 
-    public ProductListAdapter(Context context, List<ProductItem> products) {
-        this.context = context;
-        this.productList = products;
+    public ProductListAdapter(
+        ProductListActivity activity, List<ProductItem> products
+    ) {
+        parentActivity = activity;
+        productList = products;
     }
 
 
@@ -55,10 +57,10 @@ public class ProductListAdapter
         ProductItem product = productList.get(position);
         holder.productName.setText(product.getName());
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ProductDetailActivity.class);
+            Intent intent = new Intent(parentActivity, ProductDetailActivity.class);
             //intent.putExtra("product", product);
             intent.putExtra("product_id", product.getId());
-            context.startActivity(intent);
+            parentActivity.startActivity(intent);
         });
     }
 

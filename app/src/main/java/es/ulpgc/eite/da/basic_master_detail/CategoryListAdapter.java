@@ -1,6 +1,5 @@
 package es.ulpgc.eite.da.basic_master_detail;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +15,13 @@ public class CategoryListAdapter
     extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
 
     private List<CategoryItem> categoryList;
-    private Context context;
+    private CategoryListActivity parentActivity;
 
-    public CategoryListAdapter(Context context, List<CategoryItem> categories) {
-        this.context = context;
-        this.categoryList = categories;
+    public CategoryListAdapter(
+        CategoryListActivity activity, List<CategoryItem> categories
+    ) {
+        parentActivity = activity;
+        categoryList = categories;
     }
 
     public void addItems(List<CategoryItem> categories) {
@@ -54,10 +55,10 @@ public class CategoryListAdapter
         CategoryItem category = categoryList.get(position);
         holder.categoryName.setText(category.getName());
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ProductListActivity.class);
+            Intent intent = new Intent(parentActivity, ProductListActivity.class);
             //intent.putExtra("category", category);
             intent.putExtra("category_id", category.getId());
-            context.startActivity(intent);
+            parentActivity.startActivity(intent);
         });
     }
 

@@ -40,6 +40,7 @@ public class ProductListActivity
 
     @Override
     public void onClick(View view) {
+
         Intent intent = new Intent(this, ProductDetailActivity.class);
         ProductItem product = (ProductItem) view.getTag();
         //intent.putExtra("product", product);

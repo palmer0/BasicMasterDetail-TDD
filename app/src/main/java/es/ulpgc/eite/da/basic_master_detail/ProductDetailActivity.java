@@ -1,6 +1,7 @@
 package es.ulpgc.eite.da.basic_master_detail;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +9,8 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     private TextView productNameTextView;
     private TextView productDescrTextView;
+
+    //private ImageButton favoriteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         productNameTextView = findViewById(R.id.product_name);
         productDescrTextView = findViewById(R.id.product_description);
 
+        //favoriteButton = findViewById(R.id.favorite_button);
+
+
         //Product product = (Product) getIntent().getSerializableExtra("product");
 
         CatalogRepository catalog = CatalogRepository.getInstance();
@@ -26,5 +32,8 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         productNameTextView.setText(product.getName());
         productDescrTextView.setText(product.getDescription());
+
+        //favoriteButton.setImageResource(R.drawable.ic_red_heart);
+        //favoriteButton.setImageResource(R.drawable.ic_black_heart);
     }
 }

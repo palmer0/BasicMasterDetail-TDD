@@ -15,6 +15,18 @@
         android:padding="16dp"
         android:background="@color/white">
 
+        <!--
+        <ImageButton
+            android:id="@+id/favorite_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_black_heart"
+            android:layout_margin="16dp"/>
+        -->
+
         <TextView
             android:id="@+id/product_name"
             android:layout_width="wrap_content"

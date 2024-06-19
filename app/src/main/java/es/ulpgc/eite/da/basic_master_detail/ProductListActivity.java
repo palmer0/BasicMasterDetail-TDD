@@ -26,8 +26,9 @@ public class ProductListActivity
         productListRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         /*
-        Category category = (Category) getIntent().getSerializableExtra("category");
-        List<Product> products = category.getProducts();
+        CategoryItem category =
+            (CategoryItem) getIntent().getSerializableExtra("category");
+        List<ProductItem> products = category.getProducts();
         */
 
         CatalogRepository catalog = CatalogRepository.getInstance();

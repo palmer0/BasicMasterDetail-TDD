@@ -20,11 +20,12 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         productNameTextView = findViewById(R.id.product_name);
         productDescrTextView = findViewById(R.id.product_description);
-
         //favoriteButton = findViewById(R.id.favorite_button);
 
-
-        //Product product = (Product) getIntent().getSerializableExtra("product");
+        /*
+        ProductItem product =
+            (ProductItem) getIntent().getSerializableExtra("product");
+        */
 
         CatalogRepository catalog = CatalogRepository.getInstance();
         int productId = getIntent().getIntExtra("product_id", 0);
@@ -32,7 +33,6 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         productNameTextView.setText(product.getName());
         productDescrTextView.setText(product.getDescription());
-
         //favoriteButton.setImageResource(R.drawable.ic_red_heart);
         //favoriteButton.setImageResource(R.drawable.ic_black_heart);
     }

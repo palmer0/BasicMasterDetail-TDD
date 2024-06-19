@@ -3,6 +3,7 @@ package es.ulpgc.eite.da.basic_master_detail;
 import java.io.Serializable;
 
 public class ProductItem implements Serializable {
+
     private int id;
     private String name;
     private String description;

@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'es.ulpgc.eite.da.basic_master_detail'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "es.ulpgc.eite.da.basic_master_detail"

@@ -33,6 +33,9 @@ public class MasterDetailEspressoTests {
     @Test
     public void appTest() {
 
+        // Scenario: Verify categories are displayed
+        // GIVEN: I am on the Categories screen
+        // THEN: I should see the categories "Electronics", "Books", and "Fashion"
 
         onView(new RecyclerViewMatcher(R.id.category_list_recycler)
             .atPositionOnView(0, R.id.category_name))
@@ -42,6 +45,10 @@ public class MasterDetailEspressoTests {
             .atPositionOnView(1, R.id.category_name))
             .check(matches(withText("Books")));
 
+        // Scenario: View products for a category
+        // GIVEN: I am on the Categories screen
+        // WHEN: I click on the "Fashion" category
+        // THEN: I should see the products "T-shirt" and "Jeans"
 
         ViewInteraction recyclerView1 =
             onView(new RecyclerViewMatcher(R.id.category_list_recycler)
@@ -61,6 +68,10 @@ public class MasterDetailEspressoTests {
 
         pressBack();
 
+        // Scenario: Verify navigation to another category
+        // GIVEN: I am on the Categories screen
+        // WHEN: I click on the "Electronics" category
+        // THEN: I should see the products "Smartphone" and "Laptop"
 
         onView(new RecyclerViewMatcher(R.id.category_list_recycler)
             .atPositionOnView(0, R.id.category_name))
@@ -77,6 +88,10 @@ public class MasterDetailEspressoTests {
             .atPositionOnView(0, R.id.product_name))
             .check(matches(withText("Smartphone")));
 
+        // Scenario: View product details
+        // GIVEN: I am on the Products screen
+        // WHEN: I click on the "Laptop" product
+        // THEN: I should see the detailed description
 
         ViewInteraction recyclerView3 =
             onView(new RecyclerViewMatcher(R.id.product_list_recycler)
@@ -96,6 +111,10 @@ public class MasterDetailEspressoTests {
 
         pressBack();
 
+        // Scenario: Verify products remain after navigation
+        // GIVEN: I am on the Products screen
+        // WHEN: I press back to return to the Categories screen
+        // THEN: I should see the "Electronics" and "Books" categories again
 
         onView(new RecyclerViewMatcher(R.id.product_list_recycler)
             .atPositionOnView(0, R.id.product_name))
